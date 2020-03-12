@@ -22,4 +22,23 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+    public function test($param)
+    {
+        echo 'hello world';
+	}
+
+    public function _output($output)
+    {
+        echo $output.' [add by output method]';
+	}
+
+    public function _remap($method, $param)
+    {
+        if ($method === 'test') {
+            $this->$method($param);
+        } else {
+            $this->index();
+        }
+	}
 }
